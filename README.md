@@ -1,2 +1,2 @@
-# electron--simple-demo
+# electron-simple-demo
 first learn from electron-api-demo
