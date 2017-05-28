@@ -7,10 +7,11 @@ const url = require('url');
 
 let mainWindow;
 
-function createWindow () {
+function createWindow() {
     mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600
+        width: 1080,
+        minWidth: 680,
+        height: 840,
     })
 
     mainWindow.loadURL(url.format({
