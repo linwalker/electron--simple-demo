@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/linwalker/electron-simple-demo#readme",
   "dependencies": {
-    "electron": "^1.6.10"
+    "electron": "^1.6.10",
+    "electron-settings": "^3.0.14"
   }
 }
