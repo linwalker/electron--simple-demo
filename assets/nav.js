@@ -14,7 +14,7 @@ function handleSectionTrigger (e) {
 
     const buttons = document.querySelectorAll('.nav-button.is-selected');
     Array.prototype.forEach.call(buttons, function (button) {
-        button.classList.remove('is-shown');
+        button.classList.remove('is-selected');
     });
 
     event.target.classList.add('is-selected')
