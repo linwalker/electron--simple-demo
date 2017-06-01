@@ -9,3 +9,11 @@ Array.prototype.forEach.call(codeBlockWithPaths, function (code) {
     code.classList.add('language-' + extension.substring(1));
     code.textContent = fs.readFileSync(codePath);
 })
+
+document.addEventListener('DOMContentLoaded', function () {
+    const highlight = require('highlight.js');
+    const codeBlocks = document.querySelectorAll('pre code');
+    Array.prototype.forEach.call(codeBlocks, function (code) {
+        highlight.highlightBlock(code);
+    })
+})
