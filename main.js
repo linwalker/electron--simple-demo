@@ -1,4 +1,5 @@
 const electron = require('electron');
+const glob = require('glob');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 
@@ -19,22 +20,32 @@ function createWindow() {
         protocol: 'file:',
         slashes: true
     }))
-
+    loadDemos();
     mainWindow.on('closed', function () {
         mainWindow = null;
     })
 }
 
-app.on('ready', createWindow);
+function loadDemos () {
+    var files = glob.sync(path.join(__dirname, 'main-process/**/*.js'));
+    files.forEach(function (file) {
+        require(file);
+    })
+}
+function initialize () {
+    loadDemos();
+    app.on('ready', createWindow);
+    app.on('window-all-closed', function () {
+        if (process.platform !== 'darwin') {
+            app.quit()
+        }
+    })
 
-app.on('window-all-closed', function () {
-    if (process.platform !== 'darwin') {
-        app.quit()
-    }
-})
+    app.on('activate', function () {
+        if (mainWindow === null) {
+            createWindow();
+        }
+    })
+}
 
-app.on('activate', function () {
-    if (mainWindow === null) {
-        createWindow();
-    }
-})
+initialize();
